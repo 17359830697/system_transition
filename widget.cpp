@@ -988,6 +988,23 @@ void Widget::on_btn_transition_clicked()//转换
       break;
     case 16:
     {
+       if(is_float)
+        {
+            QString f_text = texts.section(".",-1,-1);
+            for(int i = 0;i<f_text.length();i++)
+            {
+                QString str = f_text.at(i);
+                if(str=="0"||str=="1"||str=="2"||str=="3"||str=="4"||str=="5"||str=="6"||str=="7"||
+                        str=="8"||str=="9")
+                    continue;
+                else
+                {
+                    error_tip();
+                    return;
+                }
+            }
+        }
+
         for(int i = 0;i<len;i++)
         {
             QString str = texts.at(i);
@@ -1006,7 +1023,6 @@ void Widget::on_btn_transition_clicked()//转换
       break;
     default:
         return;
-    }
 }
 
 void Widget::on_radio_2_clicked()
